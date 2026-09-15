@@ -28,7 +28,7 @@ namespace AleksandraKirillovaKt_41_23.Database.Configurations
 
             builder.Property(p => p.Course)
                 .IsRequired()
-                .HasColumnName("n_сourse")
+                .HasColumnName("n_course")
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Курс обучения");
 
