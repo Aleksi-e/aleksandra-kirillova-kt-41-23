@@ -4,6 +4,6 @@
     {
         public int SpecialtieId { get; set; }
         public string? SpecialtieName { get; set; }
-        public int SpecialtieCode { get; set; }
+        public string? SpecialtieCode { get; set; }
     }
 }

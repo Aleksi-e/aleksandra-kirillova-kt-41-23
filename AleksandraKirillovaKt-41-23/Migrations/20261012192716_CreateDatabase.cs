@@ -33,7 +33,7 @@ namespace AleksandraKirillovaKt_41_23.Migrations
                     specialtie_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор специальности")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     c_specialtiename = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Наименование специальности"),
-                    n_specialtiecode = table.Column<int>(type: "int", nullable: false, comment: "Код специальности")
+                    c_specialtiecode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Код специальности")
                 },
                 constraints: table =>
                 {

@@ -151,9 +151,11 @@ namespace AleksandraKirillovaKt_41_23.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpecialtieId"));
 
-                    b.Property<int>("SpecialtieCode")
-                        .HasColumnType("int")
-                        .HasColumnName("n_specialtiecode")
+                    b.Property<string>("SpecialtieCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("c_specialtiecode")
                         .HasComment("Код специальности");
 
                     b.Property<string>("SpecialtieName")

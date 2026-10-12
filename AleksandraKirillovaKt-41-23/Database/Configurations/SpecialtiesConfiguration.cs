@@ -30,8 +30,8 @@ namespace AleksandraKirillovaKt_41_23.Database.Configurations
 
             builder.Property(p => p.SpecialtieCode)
                 .IsRequired()
-                .HasColumnName("n_specialtiecode")
-                .HasColumnType(ColumnType.Int)
+                .HasColumnName("c_specialtiecode")
+                .HasColumnType(ColumnType.String50).HasMaxLength(50)
                 .HasComment("Код специальности");
 
             builder.HasIndex(p => p.SpecialtieName, $"idx_{TableName}_specialtiename");
