@@ -9,6 +9,7 @@ namespace AleksandraKirillovaKt_41_23.Interfaces
     {
         Task<Students[]> GetStudentsByGroupAsync(StudentGroupFilter filter, CancellationToken cancellationToken);
         Task<Students[]> GetStudentsByNameAsync(StudentNameFilter filter, CancellationToken cancellationToken);
+        Task<DopFilter[]> GetDopAsunce(StudentGroupFilter filterDop, CancellationToken cancellationToken);
         Task<Students> CreateStudentAsync(StudentAddUpFilter student, CancellationToken cancellationToken);
         Task<Students> UpDataStudentAsync(StudentAddUpFilter studentNew, CancellationToken cancellationToken);
         Task<bool> DeleteStudentAsync(int idDelete, CancellationToken cancellationToken);
@@ -51,6 +52,20 @@ namespace AleksandraKirillovaKt_41_23.Interfaces
                     BirthDate = s.BirthDate,
                     AcademicGroupId = s.AcademicGroupId,
                     AcademicGroups = null
+                })
+                .ToArrayAsync(cancellationToken);
+            return students;
+        }
+        //Дополнительный
+        public async Task<DopFilter[]> GetDopAsunce(StudentGroupFilter filterDop, CancellationToken cancellationToken = default)
+        {
+            var students = await _dbContext.Set<Students>()
+                .Where(e=> !e.StatusDeleted)
+                .Where(a=> a.AcademicGroups!.AcademicGroupName == filterDop.AcademicGroupName)
+                .Where(g => _dbContext.Set<Grades>().Any(e=>e.StudentId==g.StudentId && (e.Score == 2 || e.Score == 3)))
+                .Select(s=> new DopFilter
+                {
+                    LastName = s.LastName
                 })
                 .ToArrayAsync(cancellationToken);
             return students;

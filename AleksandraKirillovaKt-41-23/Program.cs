@@ -1,5 +1,6 @@
 using AleksandraKirillovaKt_41_23.Database;
 using AleksandraKirillovaKt_41_23.ServiceExtensions;
+using AleksandraKirillovaKt_41_23.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
@@ -32,6 +33,8 @@ try
         app.UseSwagger();
         app.UseSwaggerUI(x=> { x.DefaultModelsExpandDepth(-1); });
     }
+
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 

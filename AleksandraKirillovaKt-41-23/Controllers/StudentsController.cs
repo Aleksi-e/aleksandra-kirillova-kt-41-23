@@ -31,6 +31,14 @@ namespace AleksandraKirillovaKt_41_23.Controllers
             return Ok(students);
         }
 
+        [HttpPost("by_dop", Name = "GetDop")]
+        public async Task<IActionResult> GetDopAsunce(StudentGroupFilter filterDop, CancellationToken cancellationToken = default)
+        {
+            var students = await _studentService.GetDopAsunce(filterDop, cancellationToken);
+            return Ok(students);
+        }
+
+
         [HttpPost(Name = "CreateStudent")]
         public async Task<IActionResult> CreateStudentAsync(StudentAddUpFilter student, CancellationToken cancellationToken = default)
         {
