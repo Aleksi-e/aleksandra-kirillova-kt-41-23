@@ -18,8 +18,8 @@ namespace AleksandraKirillovaKt_41_23.Controllers
             _logger = logger;
             _disciplineService = disciplineService;
         }
-        [HttpPost("by_direction", Name = "GetDisciplineByDirection")]
-        public async Task<IActionResult> GetDisciplineByDirectionAsync(DisciplineDirectionFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_direction", Name = "GetDisciplineByDirection")]
+        public async Task<IActionResult> GetDisciplineByDirectionAsync([FromQuery] DisciplineDirectionFilter filter, CancellationToken cancellationToken = default)
         {
             var disciplines = await _disciplineService.GetDisciplineByDirectionAsync(filter, cancellationToken);
             return Ok(disciplines);

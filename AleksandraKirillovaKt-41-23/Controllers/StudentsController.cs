@@ -18,21 +18,21 @@ namespace AleksandraKirillovaKt_41_23.Controllers
             _studentService = studentService;
         }
 
-        [HttpPost("by_groupname", Name = "GetStudentsByGroup")]
-        public async Task<IActionResult> GetStudentsByGroupAsync(StudentGroupFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_groupname", Name = "GetStudentsByGroup")]
+        public async Task<IActionResult> GetStudentsByGroupAsync([FromQuery] StudentGroupFilter filter, CancellationToken cancellationToken = default)
         {
             var students = await _studentService.GetStudentsByGroupAsync(filter, cancellationToken);
             return Ok(students);
         }
-        [HttpPost("by_lastname", Name = "GetStudentsByName")]
-        public async Task<IActionResult> GetStudentsByNameAsync(StudentNameFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_lastname", Name = "GetStudentsByName")]
+        public async Task<IActionResult> GetStudentsByNameAsync([FromQuery] StudentNameFilter filter, CancellationToken cancellationToken = default)
         {
             var students = await _studentService.GetStudentsByNameAsync(filter, cancellationToken);
             return Ok(students);
         }
 
-        [HttpPost("by_dop", Name = "GetDop")]
-        public async Task<IActionResult> GetDopAsunce(StudentGroupFilter filterDop, CancellationToken cancellationToken = default)
+        [HttpGet("by_dop", Name = "GetDop")]
+        public async Task<IActionResult> GetDopAsunce([FromQuery] StudentGroupFilter filterDop, CancellationToken cancellationToken = default)
         {
             var students = await _studentService.GetDopAsunce(filterDop, cancellationToken);
             return Ok(students);

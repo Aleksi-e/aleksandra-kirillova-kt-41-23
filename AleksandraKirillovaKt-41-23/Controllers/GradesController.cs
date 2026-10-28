@@ -20,20 +20,20 @@ namespace AleksandraKirillovaKt_41_23.Controllers
         }
 
 
-        [HttpPost("by_gradestudent", Name = "GetGradesByStudent")]
-        public async Task<IActionResult> GetGradesByStudentAsync(GradeStudentFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_gradestudent", Name = "GetGradesByStudent")]
+        public async Task<IActionResult> GetGradesByStudentAsync([FromQuery] GradeStudentFilter filter, CancellationToken cancellationToken = default)
         {
             var grades = await _gradeService.GetGradesByStudentAsync(filter, cancellationToken);
             return Ok(grades);
         }
-        [HttpPost("by_average_disciplinegroup", Name = "GetGradesByAverageDisciplineGroup")]
-        public async Task<IActionResult> GetGradesByAverageDisciplineGroupAsync(GradeGroupDisciplineFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_average_disciplinegroup", Name = "GetGradesByAverageDisciplineGroup")]
+        public async Task<IActionResult> GetGradesByAverageDisciplineGroupAsync([FromQuery] GradeGroupDisciplineFilter filter, CancellationToken cancellationToken = default)
         {
             var grades = await _gradeService.GetGradesByAverageDisciplineGroupAsync(filter, cancellationToken);
             return Ok(grades);
         }
-        [HttpPost("by_averagecourse", Name = "GetGradesByAverageCourse")]
-        public async Task<IActionResult> GetGradesByAverageCourseAsync(GradeCoursFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_averagecourse", Name = "GetGradesByAverageCourse")]
+        public async Task<IActionResult> GetGradesByAverageCourseAsync([FromQuery] GradeCoursFilter filter, CancellationToken cancellationToken = default)
         {
             var grades = await _gradeService.GetGradesByAverageCourseAsync(filter, cancellationToken);
             return Ok(grades);

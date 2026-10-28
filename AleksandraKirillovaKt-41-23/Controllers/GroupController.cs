@@ -19,14 +19,14 @@ namespace AleksandraKirillovaKt_41_23.Controllers
             _groupService = groupService;
         }
 
-        [HttpPost("by_specialtie", Name = "GetGroupsBySpecialtie")]
-        public async Task<IActionResult> GetGroupsBySpecialtieAsync(GroupSpecialtieFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_specialtie", Name = "GetGroupsBySpecialtie")]
+        public async Task<IActionResult> GetGroupsBySpecialtieAsync([FromQuery] GroupSpecialtieFilter filter, CancellationToken cancellationToken = default)
         {
             var groups = await _groupService.GetGroupsBySpecialtieAsync(filter, cancellationToken);
             return Ok(groups);
         }
-        [HttpPost("by_year", Name = "GetGroupsByYear")]
-        public async Task<IActionResult> GetGroupsByYearAsync(GroupYearFilter filter, CancellationToken cancellationToken = default)
+        [HttpGet("by_year", Name = "GetGroupsByYear")]
+        public async Task<IActionResult> GetGroupsByYearAsync([FromQuery] GroupYearFilter filter, CancellationToken cancellationToken = default)
         {
             var groups = await _groupService.GetGroupsByYearAsync(filter, cancellationToken);
             return Ok(groups);
